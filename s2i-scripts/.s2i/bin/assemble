@@ -27,7 +27,7 @@ echo "Proudly served by Apache HTTP Server version $HTTPD_VERSION" >> ./info.htm
 
 
 echo "---> Modificant la pàgina root també"
-echo "Aquesta és la nova página principal" > index.html
+echo "Aquesta és la nova página principal" >> index.html
 
 ######## CUSTOMIZATION ENDS HERE ############
 
