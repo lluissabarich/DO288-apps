@@ -19,7 +19,7 @@ cp -Rf /tmp/src/*.html ./
 #Proudly served by Apache HTTP Server version 2.4
 
 
-DATE=`"date +%d-%m-%Y i %H:%M"`
+DATE=`date "+%d-%m-%Y i %H:%M"`
 
 echo "---> Creating info page"
 echo "Aquesta pàgina ha estat construïda: $DATE" >> ./info.html
