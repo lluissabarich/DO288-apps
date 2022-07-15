@@ -26,8 +26,8 @@ echo "Page built on $DATE" >> ./info.html
 echo "Proudly served by Apache HTTP Server version $HTTPD_VERSION" >> ./info.html
 
 
-#echo "---> Modificant la pàgina root també"
-#echo "Aquesta és la nova página principal" >> index.html
+echo "---> Modificant la pàgina root també"
+echo "Aquesta és la nova página principal" >> index.html
 
 ######## CUSTOMIZATION ENDS HERE ############
 
