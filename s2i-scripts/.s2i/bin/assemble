@@ -19,7 +19,7 @@ cp -Rf /tmp/src/*.html ./
 #Proudly served by Apache HTTP Server version 2.4
 
 
-DATE=date "+%d-%m-%Y"
+DATE=`date +%d-%m-%Y`
 
 echo "---> Creating info page"
 echo "Page built on $DATE" >> ./info.html
