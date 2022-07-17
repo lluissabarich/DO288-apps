@@ -1,0 +1,107 @@
+    1  exit
+    2  exit
+    3  dig localhost
+    4  exit
+    5  exit
+    6  ifconfig
+    7  sudo vi /etc/hosts
+    8  exit
+    9  history
+   10  exit
+   11  ll
+   12  exit
+   13  lab-configure
+   14  ls -l
+   15  git clone https://github.com/lluissabarich/DO288-apps
+   16  ls -l
+   17  git branch
+   18  cd DO288-apps/
+   19  git status
+   20  lab expose-registry start
+   21  ls -l
+   22  cd ..
+   23  ls -l
+   24  ls -l DO288-apps/ |more
+   25  ls -l DO288-apps/00-coses-meves/
+   26  ls -l DO288-apps/00-coses-meves/DO288/
+   27  ls -l DO288-apps/00-coses-meves/DO288/labs/
+   28  ls -l DO288
+   29  ls -l DO288/labs/
+   30  cp DO288/labs/ DO288-apps/00-coses-meves/DO288/
+   31  cp -r DO288/labs/ DO288-apps/00-coses-meves/DO288/
+   32  ls -l DO288/labs/
+   33  ls -l DO288-apps/00-coses-meves/DO288/labs/
+   34  ls -l DO288-apps/00-coses-meves/DO288/labs/expose-registry/
+   35  ls -l DO288-apps/00-coses-meves/DO288/labs/expose-registry/ubi-info/
+   36  ls -l DO288-apps/00-coses-meves/DO288/labs/expose-registry/ubi-info/blobs/
+   37  ls -l DO288-apps/00-coses-meves/DO288/labs/expose-registry/ubi-info/blobs/sha256/
+   38  ls -l DO288/labs/
+   39  ls -l DO288/labs/expose-registry/
+   40  ls -l DO288/solutions/
+   41  mkdir -p DO288-apps/00-coses-meves/DO288/labs/expose-registry/solutions && cp -r DO288/solutions/ DO288-apps/00-coses-meves/DO288/labs/expose-registry/solutions
+   42  git statis
+   43  git status
+   44  cd DO288-apps/
+   45  git status
+   46  git commit 00-coses-meves/
+   47  git add 00-coses-meves/
+   48  git commit -am "expose-registry"
+   49  git push
+   50  git status
+   51  lab expose-registry start
+   52  source /usr/local/etc/ocp4.config
+   53  oc login -u caronw -p 2f2e29b8c53642248914 https://api.eu46a.prod.ole.redhat.com:6443
+   54  oc get route -n openshift-image-registry
+   55  oc edit route  default-route -n openshift-image-registry
+   56  oc edit configs.imageregistry.operator.openshift.io 
+   57  oc describe configs.imageregistry.operator.openshift.io 
+   58  INTERNAL_REGISTRY=default-route-openshift-image-registry.apps.eu46a.prod.ole.redhat.com
+   59  oc new-project caronw-common 
+   60  TOKEN=$(oc whoami -t)
+   61  skopeo copy -- oci://home/student/DO288/labs/expose-registry/ubi-info docker://$INTERNAL_REGISTRY
+   62  skopeo copy --help
+   63  skopeo copy --dest-creds caronw:$TOKEN -f v2s1 oci://home/student/DO288/labs/expose-registry/ubi-info docker://$INTERNAL_REGISTRY
+   64  skopeo copy --dest-creds caronw:${TOKEN} -f v2s1 oci://home/student/DO288/labs/expose-registry/ubi-info docker://$INTERNAL_REGISTRY
+   65  podman login -u caronw -p $TOKEN $INTERNAL_REGISTRY
+   66  skopeo copy --dest-creds caronw:${TOKEN} -f v2s1 oci://home/student/DO288/labs/expose-registry/ubi-info docker://$INTERNAL_REGISTRY/caronw-common/ubi-info
+   67  oc get istag 
+   68  oc delete is ubi-info 
+   69  oc get istag 
+   70  skopeo copy --dest-creds caronw:${TOKEN} -f v2s1 oci://home/student/DO288/labs/expose-registry/ubi-info docker://$INTERNAL_REGISTRY/caronw-common/ubi-info:1.0
+   71  oc get istag 
+   72  podman pull image-registry.openshift-image-registry.svc:5000/caronw-common/ubi-info:1.0
+   73  podman pull https://image-registry.openshift-image-registry.svc:5000/caronw-common/ubi-info:1.0
+   74  podman pull image-registry.openshift-image-registry.svc:5000/caronw-common/ubi-info:1.0
+   75  oc get is
+   76  podman pull default-route-openshift-image-registry.apps.eu46a.prod.ole.redhat.com/caronw-common/ubi-info
+   77  podman pull $INTERNAL_REGISTRY/caronw-common/ubi-info:1.0
+   78  podman run ubi-container -d llllll
+   79  podman images
+   80  podman run ubi-container -d default-route-openshift-image-registry.apps.eu46a.prod.ole.redhat.com/caronw-common/ubi-info:1.0
+   81  podman run -d ubi-container default-route-openshift-image-registry.apps.eu46a.prod.ole.redhat.com/caronw-common/ubi-info:1.0
+   82  podman run -d --name ubi-container default-route-openshift-image-registry.apps.eu46a.prod.ole.redhat.com/caronw-common/ubi-info:1.0
+   83  podman ps
+   84  podman ps -a
+   85  podman logs 92
+   86  oc delete is all
+   87  oc delete is --all
+   88  skopeo copy --dest-creds luis_sabarich_es:Don3ostia -f v2s1 oci://home/student/DO288/labs/expose-registry/ubi-info docker://quay.io/luis_sabarich_es/ubi-info:1.0
+   89  oc create secret docker-registry --docker-server quay.io --docker-username luis_sabarich_es --docker-password Don3ostia
+   90  oc create secret docker-registry my-secret --docker-server quay.io --docker-username luis_sabarich_es --docker-password Don3ostia
+   91  oc link secret default my-secret --for pull
+   92  oc secret link default my-secret --for pull
+   93  oc import-image ubi-info:1.0 --from //quay.io/luis_sabarich_es/ubi-info:1.0 --reference-policy local
+   94  oc import-image ubi-info:1.0 --from //quay.io/luis_sabarich_es/ubi-info:1.0 --reference-policy local --confirm
+   95  oc import-image ubi-info:1.0 --from quay.io/luis_sabarich_es/ubi-info:1.0 --reference-policy local --confirm
+   96  oc get is
+   97  podman images
+   98  podman rmi --all --force
+   99  podman pull $INTERNAL_REGISTRY/caronw-common/ubi-info:1.0
+  100  podman run -d --name ubi-container default-route-openshift-image-registry.apps.eu46a.prod.ole.redhat.com/caronw-common/ubi-info:1.0
+  101  podman logs 9c
+  102  history
+  103  pwd
+  104  ls -l
+  105  ls -l 00-coses-meves/DO288/
+  106  ls -l 00-coses-meves/DO288/labs/expose-registry/
+  107  history > 00-coses-meves/DO288/labs/expose-registry/history-log.txt
