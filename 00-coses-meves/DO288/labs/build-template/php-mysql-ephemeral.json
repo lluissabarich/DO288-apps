@@ -194,6 +194,10 @@
                                         "value": "${DATABASE_NAME}"
                                     },
                                     {
+                                        "name": "HELLO_MESSAGE",
+                                        "value": "${HELLO_MESSAGE}"
+                                    },
+                                    {
                                         "name": "DATABASE_USER",
                                         "valueFrom": {
                                             "secretKeyRef": {
@@ -388,6 +392,7 @@
         {
             "name": "SOURCE_REPOSITORY_REF",
             "displayName": "Git Reference",
+            "value": "lluis-template",
             "description": "Set this to a branch name, tag or other ref of your repository if you are not using the default branch."
         },
         {
@@ -432,6 +437,12 @@
             "displayName": "Database Password",
             "generate": "expression",
             "from": "[a-zA-Z0-9]{16}"
+        },
+        {
+            "name": "HELLO_MESSAGE",
+            "displayName": "hello message",
+            "value": "hello architects",
+            "required": true
         }
     ],
     "labels": {
