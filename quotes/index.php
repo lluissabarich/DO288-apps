@@ -1,3 +1,3 @@
 <?php
-    print "This app returns a random funny quote.  HELLO_MESSAGE= $HELLO_MESSAGE    \n"
+    print "El valor de la variable HELLO_MESSAGE es: ".getenv("HELLO_MESSAGE")."\n";
 ?>
