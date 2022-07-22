@@ -2,7 +2,7 @@
     "kind": "Template",
     "apiVersion": "template.openshift.io/v1",
     "metadata": {
-        "name": "php-mysql-ephemeral",
+        "name": "lluis-php-mysql-ephemeral",
         "annotations": {
             "description": "A  PHP application with a MySQL database.\nWARNING: Any data stored will be lost upon pod destruction. Only use this template for testing.",
             "iconClass": "icon-php",
@@ -20,7 +20,8 @@
             "metadata": {
                 "name": "${NAME}",
                 "labels": {
-                    "app": "${NAME}"
+                    "app": "${NAME}",
+                    "template": "lluis-php-mysql-ephemeral"
                 }
             },
             "stringData": {
@@ -38,7 +39,8 @@
                 },
                 "name": "${NAME}",
                 "labels": {
-                    "app": "${NAME}"
+                    "app": "${NAME}",
+                    "template": "lluis-php-mysql-ephemeral"
                 }
             },
             "spec": {
@@ -63,7 +65,8 @@
                 },
                 "name": "${NAME}",
                 "labels": {
-                    "app": "${NAME}"
+                    "app": "${NAME}",
+                    "template": "lluis-php-mysql-ephemeral"
                 }
             },
             "spec": {
@@ -83,7 +86,8 @@
                 },
                 "name": "${NAME}",
                 "labels": {
-                    "app": "${NAME}"
+                    "app": "${NAME}",
+                    "template": "lluis-php-mysql-ephemeral"
                 }
             },
 	    "spec": {
@@ -101,7 +105,8 @@
                 },
                 "name": "${NAME}",
                 "labels": {
-                    "app": "${NAME}"
+                    "app": "${NAME}",
+                    "template": "lluis-php-mysql-ephemeral"
                 }
             },
             "spec": {
@@ -123,7 +128,7 @@
                     "sourceStrategy": {
                         "from": {
                             "kind": "ImageStreamTag",
-                            "name": "php:7.3-ubi8",
+                            "name": "php:7.3",
                             "namespace": "${NAMESPACE}"
                         }
                     },
@@ -154,7 +159,8 @@
                 },
                 "name": "${NAME}",
                 "labels": {
-                    "app": "${NAME}"
+                    "app": "${NAME}",
+                    "template": "lluis-php-mysql-ephemeral"
                 }
             },
             "spec": {
@@ -170,7 +176,8 @@
                 "template": {
                     "metadata": {
                         "labels": {
-                            "app": "${NAME}"
+                            "app": "${NAME}",
+                            "template": "lluis-php-mysql-ephemeral"
                         },
                         "name": "${NAME}"
                     },
@@ -227,7 +234,8 @@
                 },
                 "name": "${DATABASE_SERVICE_NAME}",
                 "labels": {
-                    "app": "${DATABASE_SERVICE_NAME}"
+                    "app": "${DATABASE_SERVICE_NAME}",
+                    "template": "lluis-php-mysql-ephemeral"
                 }
             },
             "spec": {
@@ -252,7 +260,8 @@
                 },
                 "name": "${DATABASE_SERVICE_NAME}",
                 "labels": {
-                    "app": "${DATABASE_SERVICE_NAME}"
+                    "app": "${DATABASE_SERVICE_NAME}",
+                    "template": "lluis-php-mysql-ephemeral"
                 }
             },
             "spec": {
@@ -269,7 +278,8 @@
                     "metadata": {
                         "name": "${DATABASE_SERVICE_NAME}",
                         "labels": {
-                            "app": "${DATABASE_SERVICE_NAME}"
+                            "app": "${DATABASE_SERVICE_NAME}",
+                            "template": "lluis-php-mysql-ephemeral"
                         }
                     },
                     "spec": {
@@ -308,7 +318,7 @@
                                         "value": "${DATABASE_NAME}"
                                     }
                                 ],
-                                "image": "mysql:5.7",
+                                "image": "mysql:8.0",
                                 "livenessProbe": {
                                     "initialDelaySeconds": 30,
                                     "tcpSocket": {
@@ -372,7 +382,8 @@
             "name": "SOURCE_REPOSITORY_URL",
             "displayName": "Git Repository URL",
             "description": "The URL of the repository with your application source code.",
-            "required": true
+            "required": true,
+            "value": "https://github.com/lluissabarich/DO288-apps"
         },
         {
             "name": "SOURCE_REPOSITORY_REF",
@@ -382,12 +393,14 @@
         {
             "name": "CONTEXT_DIR",
             "displayName": "Context Directory",
+            "value": "quotes",
             "description": "Set this to the relative path to your project if it is not in the root of your repository."
         },
         {
             "name": "APPLICATION_DOMAIN",
             "displayName": "Application Hostname",
-            "description": "The exposed hostname that will route to the PHP app service, if left blank a value will be defaulted."
+            "description": "The exposed hostname that will route to the PHP app service, if left blank a value will be defaulted.",
+            "required": true
         },
         {
             "name": "GITHUB_WEBHOOK_SECRET",
@@ -422,6 +435,6 @@
         }
     ],
     "labels": {
-        "template": "php-mysql-ephemeral"
+        "template": "lluis-php-mysql-ephemeral"
     }
 }
