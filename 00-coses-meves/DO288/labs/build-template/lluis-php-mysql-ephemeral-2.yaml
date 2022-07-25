@@ -133,6 +133,8 @@ objects:
             value: ${DATABASE_SERVICE_NAME}
           - name: DATABASE_NAME
             value: ${DATABASE_NAME}
+          - name: HELLO_MESSAGE
+            value: ${HELLO_MESSAGE}
           - name: DATABASE_USER
             valueFrom:
               secretKeyRef:
@@ -258,6 +260,10 @@ parameters:
   displayName: Application Hostname
   name: APPLICATION_DOMAIN
   required: true
+- description: hello message 
+  displayName: hello message
+  name: HELLO_MESSAGE
+  value: hola arquitecte lluis
 - description: Github trigger secret.  A difficult to guess string encoded as part
     of the webhook URL.  Not encrypted.
   displayName: GitHub Webhook Secret
