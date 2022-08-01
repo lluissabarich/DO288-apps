@@ -22,7 +22,7 @@ cp -Rf /tmp/src/*.html ./
 
 #DATE=`date "+%d-%m-%Y i %H:%M"`
 
-DATE=$(date "+%d-%m-%Y a hora de +%H:%M")
+DATE=$(date "+%Y-%m-%d a hora de %H:%M")
 
 echo "---> Creating info page"
 echo "Aquesta pàgina ha estat construïda: $DATE" >> ./info.html
