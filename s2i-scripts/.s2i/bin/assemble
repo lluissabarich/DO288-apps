@@ -13,13 +13,16 @@ config_s2i
 echo "---> Installing application source"
 cp -Rf /tmp/src/*.html ./
 
+
 #DATE=`date "+%b %d, %Y @ %H:%M %p"`
 #aquest és el output:
 #Page built on Jul 15, 2022 @ 14:24 PM
 #Proudly served by Apache HTTP Server version 2.4
 
 
-DATE=`date "+%d-%m-%Y i %H:%M"`
+#DATE=`date "+%d-%m-%Y i %H:%M"`
+
+DATE=$(date "+%d-%m-%Y a hora de +%H:%M")
 
 echo "---> Creating info page"
 echo "Aquesta pàgina ha estat construïda: $DATE" >> ./info.html
