@@ -97,7 +97,7 @@ objects:
       sourceStrategy:
         from:
           kind: ImageStreamTag
-          name: php:latest
+          name: php:7.3
           namespace: ${NAMESPACE}
       type: Source
     triggers:
@@ -131,6 +131,8 @@ objects:
         - env:
           - name: DATABASE_SERVICE_NAME
             value: ${DATABASE_SERVICE_NAME}
+          - name: HELLO_MESSAGE
+            value: ${HELLO_MESSAGE}
           - name: DATABASE_NAME
             value: ${DATABASE_NAME}
           - name: DATABASE_USER
@@ -271,6 +273,9 @@ parameters:
   name: DATABASE_NAME
   required: true
   value: phpapp
+- displayName: HELLO_MESSAGE
+  name: HELLO_MESSAGE
+  value: "namaste architects!!"
 - displayName: Database User
   name: DATABASE_USER
   required: true
