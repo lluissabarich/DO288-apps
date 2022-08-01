@@ -24,6 +24,7 @@ DATE=`date "+%d-%m-%Y i %H:%M"`
 echo "---> Creating info page"
 echo "Aquesta pàgina ha estat construïda: $DATE" >> ./info.html
 echo "Proudly served by Apache HTTP Server version $HTTPD_VERSION" >> ./info.html
+echo "Aquest és el missatge de benvinguda: $HELLO_MESSAGE" >> ./info.html
 
 
 echo "---> Modificant la pàgina root també"
