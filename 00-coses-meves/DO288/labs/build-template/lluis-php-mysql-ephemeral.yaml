@@ -107,7 +107,7 @@ objects:
         secret: ${GITHUB_WEBHOOK_SECRET}
       type: GitHub
 - apiVersion: apps/v1
-  kind: DeploymentConfig
+  kind: Deployment
   metadata:
     annotations:
       description: Defines how to deploy the PHP application
