@@ -1,0 +1,38 @@
+  353  podman build -t quay.io/luis_sabarich_es/todo-front-end:latest
+  354  podman build -t quay.io/luis_sabarich_es/todo-front-end:latest .
+  355  podman images
+  356  podman push quay.io/luis_sabarich_es/todo-front-end
+  357  podman login -u luis_sabarich_es -p Don3ostia quay.io
+  358  podman push quay.io/luis_sabarich_es/todo-front-end
+  359  oc new-app quay.io/luis_sabarich_es/todo-front-end
+  360  oc new-app --docker-image quay.io/luis_sabarich_es/todo-front-end
+  361  oc new-app quay.io/luis_sabarich_es/todo-front-end
+  362  skopeo copy --help |les
+  363  skopeo copy --help |less
+  364  oc new-app containers-storage:quay.io/luis_sabarich_es/todo-front-end docker://quay.io/luis_sabarich_es/todo-front-end
+  365  skopeo copy containers-storage:quay.io/luis_sabarich_es/todo-front-end docker://quay.io/luis_sabarich_es/todo-front-end
+  366  skopeo copy -f v2s1  containers-storage:quay.io/luis_sabarich_es/todo-front-end docker://quay.io/luis_sabarich_es/todo-front-end
+  367  oc new-app quay.io/luis_sabarich_es/todo-front-end
+  368  oc get pods
+  369  oc get all
+  370  oc expose service todo-front-end 
+  371  oc get route todo-front-end 
+  372  firefox todo-front-end-uhrylh-review-todo.apps.eu46a.prod.ole.redhat.com
+  373  oc new-app --name todo-ssr https://github.com/RedHatTraining/DO288-apps --context-dir=todo-ssr --build-env npm_config_registry="${RHT_OCP4_NEXUS_SERVER}/repository/nodejs"
+  374  oc create configmap todo-ssr-host --from-literal API_HOST="http://todo-list:3000"
+  375  oc set env deployment todo-ssr --from=cm/todo-ssr-host
+  376  watch -n 1 oc get pods
+  377  oc get route
+  378  oc expose service todo-ssr 
+  379  oc get route
+  380  firefox todo-ssr-uhrylh-review-todo.apps.eu46a.prod.ole.redhat.com
+  381  lab review-todo grade
+  382  oc get routes
+  383  history
+  384  oc delete all -l app=todo-front-end
+  385  oc new-app --docker-image quay.io/luis_sabarich_es/todo-front-end
+  386  oc delete all -l app=todo-front-end
+  387  oc new-app --name todo-frontend --docker-image quay.io/luis_sabarich_es/todo-front-end
+  388  oc expose service todo-frontend 
+  389  lab review-todo grade
+
